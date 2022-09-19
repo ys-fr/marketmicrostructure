@@ -13,17 +13,7 @@
         \item If ``H<0.5``, the dynamics might be the short memory process.
     \end{itemize}
 """
-"""
-    # Examples
-    ```
-    julia> a = randn(10000)
 
-    julia> y = cumsum(a)
-
-    julia> Variogram(y,100)
-
-    ```
-"""
 function Variogram(y::AbstractArray, l::Int=10,;data::AbstractArray=y, lags::Int=l)::Vector{Float64}
     result::Vector{Float64} = zeros(Float64,lags);
     n::Int64 = length(y)
