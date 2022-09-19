@@ -2,7 +2,7 @@
     Variogram(y::AbstractArray, l::Int,; [data::AbstractArray=y, lag::Int=l]) -> Vector{Float64}
 
     # A brief description of variogram
-    This function calculate variogram statistics ``V(\tau)``:
+    This function calculate variogram statistics $(\tau)$:
         ```math
             V(\tau) := \left\langle \left(y(\tau) -y(0)\right)^2 \right\rangle.
         ```
@@ -12,6 +12,17 @@
         \item If ``H>0.5``, the dynamics might be the long memory process.
         \item If ``H<0.5``, the dynamics might be the short memory process.
     \end{itemize}
+"""
+"""
+    # Examples
+    ```
+    julia> a = randn(10000)
+
+    julia> y = cumsum(a)
+
+    julia> Variogram(y,100)
+
+    ```
 """
 function Variogram(y::AbstractArray, l::Int=10,;data::AbstractArray=y, lags::Int=l)::Vector{Float64}
     result::Vector{Float64} = zeros(Float64,lags);
