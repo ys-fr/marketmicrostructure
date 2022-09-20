@@ -16,9 +16,9 @@
 
 function Variogram(y::AbstractArray, l::Int=10,;data::AbstractArray=y, lags::Int=l)::Vector{Float64}
     result::Vector{Float64} = zeros(Float64,lags);
-    n::Int64 = length(y)
+    n::Int64 = length(data)
     for i in 1:lags
-        result[i] = mean( (y[1:n-i] -y[i+1:n]).^2)
+        result[i] = mean( (data[1:n-i] -data[i+1:n]).^2)
     end
     return result
 end
